@@ -1,5 +1,6 @@
 import player as p
 import match as m
+import team as t
 import numpy as np
 
 class Rating:
@@ -13,7 +14,7 @@ class Rating:
         
     }
     
-    def __init__(self, player1 : p.Player, player2 : p.Player, match : m.Match) -> None:
+    def __init__(self, player1 : p.Player | t.Team, player2 : p.Player | t.Team, match : m.Match) -> None:
         self.p1 = {
             
         }
