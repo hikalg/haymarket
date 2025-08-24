@@ -24,4 +24,38 @@ class Team:
             self.players.append(player)
         
     def add_players(self, *players : p.Player) -> int:
-       pass
+        players_queue = self.players
+        
+        for player in players:
+            players_queue.append(player)
+
+        if len(players_queue) >  int(max_team_size or 0):
+            return 108
+        else:
+            self.players = players_queue
+            return 0
+        
+    def remove_players(self, *players : p.Player | int) -> int:
+        players_queue = self.players
+        for player in players:
+            if player not in players_queue:
+                return 180
+            
+            players_queue.remove(player)
+            
+        if (len(players_queue) < int(min_team_size or 0) or players == "*"):
+            players_queue = []
+        
+        self.players = players_queue
+        return 0
+    
+    def is_in_team(self, *players : p.Player) -> tuple:
+        status = []
+        for player in players:
+            if player not in self.players:
+                status.append(False)
+            
+            status.append(True)
+        
+        return tuple(status)
+            
